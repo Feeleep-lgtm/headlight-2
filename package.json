@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Feeleep-lgtm/headlight-2#readme",
   "dependencies": {
+    "csv-parser": "^3.0.0",
     "node": "^19.0.1"
   }
 }
