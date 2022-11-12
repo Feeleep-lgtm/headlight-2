@@ -4,7 +4,8 @@
   "description": "��#\u0000 \u0000h\u0000e\u0000a\u0000d\u0000l\u0000i\u0000g\u0000h\u0000t\u0000-\u00002\u0000\r\u0000 \u0000",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,9 @@
   },
   "homepage": "https://github.com/Feeleep-lgtm/headlight-2#readme",
   "dependencies": {
+    "csv-parser": "^3.0.0",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
     "node": "^19.0.1"
   }
 }
