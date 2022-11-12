@@ -1,32 +1,33 @@
 const fs = require('fs')
 const path = require('path')
-const csv = require('csv-parser');
+const express = require('express')
+const cors = require('cors')
+const helmet = require('helmet')
+const {
+    json,
+    urlencoded
+} = express
+const { csvUpload } = require('./routes/upload')
 
-// a promise based function that takes a csv file and return a json array
-async function convertCSV(filePath) {
-    if (path.extname(filePath) !== '.csv') {
-        throw new Error("unsupported file type")
-    }
-    const jsonData = [];
-    return new Promise((resolve, reject) => {
-        fs.createReadStream(filePath)
-            .pipe(csv())
-            .on('error', () => {
-                reject("erroe reading file")
-            })
-            .on('data', (row) => {
-                if (!row.name || !row.organization || !row.award || !row.description || !row.date || !row.certificate_number) {
-                    return 'invalid data type'
-                }
-                jsonData.push(row)
-            })
-            .on('end', () => {
-                resolve(jsonData)
-            });
+const app = express()
+
+// add middlewares
+app.use(cors())
+app.use(helmet())
+app.use(json())
+app.use(urlencoded({
+    extended: true
+}))
+
+// example form 
+app.get('/', (req, res) => {
+    fs.readFile("./index.html", "utf-8", (err, data) => {
+        if (err) return res.send('error')
+        res.send(data)
     })
-}
+})
+app.post("/csv", csvUpload )
 
-// testing out the function
-convertCSV("SampleCSV - Sheet1.csv").then(data => {
-    console.log(data)
-}).catch(error => console.log({"error": error}))
+app.listen(3000, () => {
+    console.log('server up and running')
+})
