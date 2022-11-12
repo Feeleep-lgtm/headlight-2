@@ -4,6 +4,7 @@ const {
 const convertCSV = require('../utilities/convert')
 const fs = require('fs')
 
+// post request handler for route '/csv'
 exports.csvUpload = (req, res, next) => {
     upload(req, res, function (err) {
         if (err) {
