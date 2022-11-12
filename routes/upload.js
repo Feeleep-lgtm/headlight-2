@@ -16,7 +16,8 @@ exports.csvUpload = (req, res, next) => {
             convertCSV(filePath).then(data => {
                 fs.unlink(filePath, (err) => {
                     if (err) {
-                        next(err)
+                       // next(err)
+return res.status(500).send("internal system error")
                     }
                     res.status(200).json(data)
                 })
