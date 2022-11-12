@@ -7,13 +7,15 @@ const {
     json,
     urlencoded
 } = express
-const { csvUpload } = require('./routes/upload')
+
+const csvUpload  = require('./routes/upload')
 
 const app = express()
 
 // add middlewares
 app.use(cors())
-//app.use(helmet())
+app.use(helmet())
+
 app.use(json())
 app.use(urlencoded({
     extended: true
@@ -26,7 +28,7 @@ app.get('/', (req, res) => {
         res.send(data)
     })
 })
-app.post("/csv", csvUpload )
+// app.post("/csv", csvUpload )
 
 // generic route handler
 
