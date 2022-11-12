@@ -3,7 +3,8 @@ const path = require('path')
 const csv = require('csv-parser');
 
 // a promise based function that takes a csv file and return a json array
-async function convertCSV(filePath) {
+//async 
+function convertCSV(filePath) {
     if (path.extname(filePath) !== '.csv') {
         throw new Error("unsupported file type")
     }
