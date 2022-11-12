@@ -13,7 +13,7 @@ const app = express()
 
 // add middlewares
 app.use(cors())
-app.use(helmet())
+//app.use(helmet())
 app.use(json())
 app.use(urlencoded({
     extended: true
