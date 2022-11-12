@@ -1,25 +1,25 @@
-const fs = require('fs')
-const path = require('path')
 const express = require('express')
-const cors = require('cors')
-const helmet = require('helmet')
+const fs = require('fs')
+// const path = require('path')
+// const cors = require('cors')
+// const helmet = require('helmet')
 const {
-    json,
-    urlencoded
+    json
+    // urlencoded
 } = express
 
-const csvUpload  = require('./routes/upload')
+// const csvUpload  = require('./routes/upload')
 
 const app = express()
 
 // add middlewares
-app.use(cors())
-app.use(helmet())
+// app.use(cors())
+// app.use(helmet())
 
 app.use(json())
-app.use(urlencoded({
-    extended: true
-}))
+// app.use(urlencoded({
+    // extended: true
+// }))
 
 // example form 
 app.get('/', (req, res) => {
@@ -34,6 +34,6 @@ app.get('/', (req, res) => {
 
 // server exeption handler
 
-app.listen(3000, () => {
+app.listen(8080, () => {
     console.log('server up and running')
 })
